@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { db, eq, schema } from "@/lib/db";
 import type { GeneratedWebsite } from "@/lib/site-schema";
 
+export const dynamic = "force-dynamic";
+
 type RouteParams = { params: Promise<{ siteId: string; productId: string }> };
 
 /**

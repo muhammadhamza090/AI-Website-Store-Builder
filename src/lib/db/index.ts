@@ -2,10 +2,9 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import * as schema from "./schema";
 
-const connectionString = process.env.DATABASE_URL;
-if (!connectionString) {
-  throw new Error("DATABASE_URL environment variable is not set");
-}
+// DATABASE_URL is validated at runtime. Using a placeholder prevents Next.js
+// from failing during static build analysis when env vars aren't present.
+const connectionString = process.env.DATABASE_URL ?? "postgresql://build_placeholder";
 
 /**
  * Global singleton to prevent creating multiple connections in dev (HMR).

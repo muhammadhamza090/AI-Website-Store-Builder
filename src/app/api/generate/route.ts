@@ -15,6 +15,7 @@ import { callClaudeStreaming, getClaudeClient, getClaudeModel } from "@/lib/clau
 
 // Tell Next.js this route can run for up to 15 minutes (AI graph + HTML generation + DB save)
 export const maxDuration = 900;
+export const dynamic = "force-dynamic";
 
 const GRAPH_TIMEOUT_MS = Number(process.env.AI_GRAPH_TIMEOUT_MS ?? 480_000);
 

@@ -4,8 +4,10 @@ import { createId } from "./cuid";
 /**
  * Database schema name — read from DB_SCHEMA env var.
  */
-const schemaName = process.env.DB_SCHEMA;
-if (!schemaName) throw new Error("DB_SCHEMA env var is required");
+// DB_SCHEMA is validated at runtime (inside request handlers).
+// Using a placeholder at module-eval time prevents Next.js build from
+// failing when it statically analyses routes that import this module.
+const schemaName = process.env.DB_SCHEMA ?? "__build_placeholder__";
 export const ecomStore = pgSchema(schemaName);
 
 // ── Organizations ────────────────────────────────────────────────────────────

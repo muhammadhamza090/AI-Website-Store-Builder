@@ -3,6 +3,8 @@ import { db, eq, schema } from "@/lib/db";
 import { generateCodeBundle } from "@/lib/codegen";
 import type { GeneratedWebsite } from "@/lib/site-schema";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ siteId: string }> }

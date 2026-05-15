@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { db, schema, desc } from "@/lib/db";
 import { eq, sql } from "drizzle-orm";
 
+export const dynamic = "force-dynamic";
+
 /**
  * GET /api/orgs — List all organizations with site counts
  */

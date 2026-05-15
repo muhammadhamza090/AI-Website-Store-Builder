@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { db, schema, desc, eq } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 type RouteParams = { params: Promise<{ slug: string }> };
 
 /**
