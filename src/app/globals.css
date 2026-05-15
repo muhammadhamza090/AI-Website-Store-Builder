@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  --bg: 255 255 255;
+  --fg: 17 24 39;
+  --muted: 107 114 128;
+  --card: 255 255 255;
+  --border: 229 231 235;
+  --primary: 99 102 241;
+  --primary-foreground: 255 255 255;
+}
+
+body {
+  color: rgb(var(--fg));
+  background: rgb(var(--bg));
+}
+
+/* ── Landing page scroll animations ─────────────────── */
+@keyframes floatSlow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+@keyframes floatCard { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-16px) rotate(2deg)} }
+@keyframes particle { 0%{transform:translateY(0) scale(1);opacity:0} 10%{opacity:.6} 90%{opacity:.6} 100%{transform:translateY(-100vh) scale(0);opacity:0} }
+@keyframes codeStream { 0%{transform:translateY(0);opacity:1} 100%{transform:translateY(-60px);opacity:0} }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(99,102,241,.2)} 50%{box-shadow:0 0 60px rgba(99,102,241,.5)} }
+@keyframes confetti { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(100px) rotate(720deg);opacity:0} }
+@keyframes wiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
+@keyframes stumble {
+  0%{transform:rotate(0) translateX(0)} 
+  10%{transform:rotate(-12deg) translateX(-15px)} 
+  25%{transform:rotate(10deg) translateX(12px)} 
+  40%{transform:rotate(-8deg) translateX(-10px)} 
+  55%{transform:rotate(6deg) translateX(8px)} 
+  70%{transform:rotate(-4deg) translateX(-5px)} 
+  85%{transform:rotate(2deg) translateX(3px)} 
+  100%{transform:rotate(0) translateX(0)}
+}
+
