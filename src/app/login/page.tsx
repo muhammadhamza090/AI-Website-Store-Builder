@@ -18,6 +18,13 @@ function LoginForm() {
     setError("");
     setLoading(true);
 
+    // Guard: check that public env vars were baked into the build
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      setError("Configuration error: Supabase public keys are missing from the build. Re-deploy with NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY set.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const supabase = createSupabaseBrowser();
       const { error: authError } = await supabase.auth.signInWithPassword({
@@ -32,8 +39,9 @@ function LoginForm() {
 
       router.push(redirect);
       router.refresh();
-    } catch {
-      setError("An unexpected error occurred");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      setError(`Auth error: ${message}`);
     } finally {
       setLoading(false);
     }
